@@ -55,7 +55,7 @@ Terminalを開き、`crane_x7_moveit_config`の`demo.launch`を起動します�
 >（とりあえず、一回realsenseD435iを動かせばなんとかなります）
 
 このパッケージにあるプログラムを動かし、反転をし続けないようにします。
-次のコマンドを実行します。
+次のコマンドを実行します。https://github.com/rt-net/crane_x7_ros/blob/images/images/crane_x7_gazebo.png
 
 ```sh
 roslaunch robot_design3 opencv.launch 
@@ -85,7 +85,8 @@ roslaunch crane_x7_moveit_config demo.launch port:=/dev/ttyUSB1
 ```sh
 rosrun robot_design3 pick_up_move.py
 ```
-
+物体検知完了時の動き
+![crane_x7_gazebo](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/02ee0d609d88739e040319f066ee725c.gif "crane_x7_gazebo")
 - 最後にexplore_move.pyを実行します。
 > 物体検知するための、探索動作を行います。
 
@@ -95,6 +96,5 @@ rosrun robot_design3 explore_move.py
 ![crane_x7_gazebo](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/02ee0d609d88739e040319f066ee725c.gif "crane_x7_gazebo")
 
 実際の動作はこちらになります。
-
 [YoutubeMovie](https://youtu.be/2-XMopff29E)
 
