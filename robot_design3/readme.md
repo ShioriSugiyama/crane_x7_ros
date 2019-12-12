@@ -62,7 +62,7 @@ roslaunch robot_design3 opencv.launch
 ```
 以下のようなwindowが表示されます。
 windowは閉じずにそのままにしてOKです。
-![RGB_image](https://files.slack.com/files-tmb/TP2T4BG2Z-FQWLARJ81-60821edd5d/image_480.png "RGB_image")
+![RGB_image](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/1794985.jpg "RGB_image")
 > これで、IMUの影響による画像反転は防がれます。
 
 
