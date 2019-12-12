@@ -67,7 +67,8 @@ Terminalを開き、`crane_x7_moveit_config`の`demo.launch`を起動します�
 次のコマンドを実行します。
 
 ```sh
-roslaunch robot_design3 opencv.launch 
+roslaunch realsense2_camera rs_camera.launch 
+rosrucrane_x7_robot_design3 cam 
 ```
 以下のようなwindow[RGB_image]が表示されます。
 window[RGB_image]は閉じずにそのままにしてOKです。
