@@ -18,7 +18,7 @@
 
   ```bash
   cd ~/catkin_ws/src/crane_x7_ros
-  svn export https://github.com/ShioriSugiyama/crane_x7_ros/trunk/robot_design3
+  svn export https://github.com/ShioriSugiyama/crane_x7_ros/trunk/crane_x7_robot_design3
   ```
   ダウンロードして、実行許可がない場合は次のコマンドで許可与えてください。
    ```bash
@@ -39,7 +39,7 @@
   cd ~/catkin_ws && catkin_make
   ```
 
-# robot_design3
+# crane_x7_robot_design3
 
 CRANE-X7のためのパッケージ、 `realsensD435i` を使って画像処理して`crane_x7`を動作させるためのパッケージです。
 
@@ -68,7 +68,7 @@ Terminalを開き、`crane_x7_moveit_config`の`demo.launch`を起動します�
 
 ```sh
 roslaunch realsense2_camera rs_camera.launch 
-rosrucrane_x7_robot_design3 cam 
+rosrun crane_x7_robot_design3 cam 
 ```
 以下のようなwindow[RGB_image]が表示されます。
 window[RGB_image]は閉じずにそのままにしてOKです。
@@ -93,7 +93,7 @@ roslaunch crane_x7_moveit_config demo.launch port:=/dev/ttyUSB1
 > 物体が検知に完了時、動き始めるので実行させてもすぐにcrane_x7動きません。
 
 ```sh
-rosrun robot_design3 pick_up_move.py
+rosrun crane_x7_robot_design3 pick_up_move.py
 ```
 物体検知完了時の動き
 ![crane_x7_e](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/98a708fc4e160b0428ef70ab31432807.gif "crane_x7_e")
@@ -101,7 +101,7 @@ rosrun robot_design3 pick_up_move.py
 > 物体検知するための、探索動作を行います。
 
 ```sh
-rosrun robot_design3 explore_move.py
+rosrun crane_x7_robot_design3 explore_move.py
 ```
 物体探索動作
 
