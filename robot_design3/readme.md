@@ -24,7 +24,7 @@
    ```bash
    chmod 777　ファイル名
     ```
--  追加したパッケージをコンパイルしてくれるようにpackage.xmlに記入
+-  追加したパッケージをコンパイルしてくれるように~/catkin_ws/src/crane_x7_ros/crane_xにあるpackage.xmlに記入
 
     以下の写真のように26行目に以下の文を追加
   
