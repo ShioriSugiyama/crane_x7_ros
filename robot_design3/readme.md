@@ -45,7 +45,7 @@ CRANE-X7のためのパッケージ、 `crane_x7`&`realsensD435i` を使って�
 
 | 使用するパッケージ内プログラム名 | 機能説明 |
 ----|----
-| opencv.launch  | 赤色の物体を表示する |
+| opencv.cpp  | 赤色の物体を表示する |
 | explore_move.py | cranex_7が物体を探すために探索動作を行う |
 | pick_up_move.py | 物体が検知した場合、物体をつかみに行く |
 
