@@ -26,7 +26,7 @@
     ```
 -  追加したパッケージをコンパイルしてくれるようにpackage.xmlに記入
 以下の写真のように
-https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/a3fe030e89c33e0a895bda411ab39625.png
+![cmake](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/a3fe030e89c33e0a895bda411ab39625.png "cmake")
 - `catkin_make`を使用して本パッケージをビルドします。
 
   ```bash
@@ -49,7 +49,7 @@ CRANE-X7のためのパッケージ、 `crane_x7`&`realsensD435i` を使って�
 
 CRANE_X7の制御信号ケーブルを制御用パソコンへ接続します。
 Terminalを開き、`crane_x7_moveit_config`の`demo.launch`を起動します。
-https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/2163519889481d2ef15215dd37d131f6.gif
+
 
 ### 実機
 
@@ -58,7 +58,7 @@ https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/2163519889481d2e
 >（とりあえず、一回realsenseD435iを動かせばなんとかなります）
 
 このパッケージにあるプログラムを動かし、反転をし続けないようにします。
-次のコマンドを実行します。https://github.com/rt-net/crane_x7_ros/blob/images/images/crane_x7_gazebo.png
+次のコマンドを実行します。
 
 ```sh
 roslaunch robot_design3 opencv.launch 
