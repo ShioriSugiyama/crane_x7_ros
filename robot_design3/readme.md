@@ -92,7 +92,7 @@ rosrun robot_design3 pick_up_move.py
 ```sh
 rosrun robot_design3 explore_move.py
 ```
-https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/02ee0d609d88739e040319f066ee725c.gif
+![crane_x7_gazebo](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/02ee0d609d88739e040319f066ee725c.gif "crane_x7_gazebo")
 
 実際の動作はこちらになります。
 
