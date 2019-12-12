@@ -1,5 +1,0 @@
-<launch>
-    <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
-
-    <node name="cam" pkg="crane_x7_robot_design3" type="opencv.cpp" required="true" />
-</launch>
