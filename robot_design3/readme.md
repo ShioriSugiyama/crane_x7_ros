@@ -86,7 +86,7 @@ roslaunch crane_x7_moveit_config demo.launch port:=/dev/ttyUSB1
 rosrun robot_design3 pick_up_move.py
 ```
 物体検知完了時の動き
-![crane_x7_e](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/3d14598c4e1979e02581750f0748550e.gif?raw=true "crane_x7_e")
+![crane_x7_e](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/98a708fc4e160b0428ef70ab31432807.gif "crane_x7_e")
 - 最後にexplore_move.pyを実行します。
 > 物体検知するための、探索動作を行います。
 
