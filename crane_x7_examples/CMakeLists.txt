@@ -45,8 +45,8 @@ include_directories(include ${catkin_INCLUDE_DIRS} ${OpenCV_INCLDUE_DIRS})
 ## Install ##
 #############
 
-add_executable(cam   scripts/camera.cpp)
-target_link_libraries(cam ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(cam_ex   scripts/camera.cpp)
+target_link_libraries(cam_ex ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 ##add_executable(cam   scripts/camera_sub.cpp)
 ##target_link_libraries(cam2 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 install(PROGRAMS
