@@ -26,10 +26,10 @@
     ```
 -  追加したパッケージをコンパイルしてくれるようにpackage.xmlに記入
 
-以下の写真のように26行目に以下の文を追加
-```
-  <run_depend>crane_x7_robot_design3</run_depend>
-```
+  以下の写真のように26行目に以下の文を追加
+  ```
+    <run_depend>crane_x7_robot_design3</run_depend>
+  ```
 
 ![cmake](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/a3fe030e89c33e0a895bda411ab39625.png "cmake")
 - `catkin_make`を使用して本パッケージをビルドします。
