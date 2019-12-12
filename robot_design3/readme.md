@@ -46,7 +46,7 @@ CRANE-X7のためのパッケージ、 `crane_x7`&`realsensD435i` を使って�
 
 CRANE_X7の制御信号ケーブルを制御用パソコンへ接続します。
 Terminalを開き、`crane_x7_moveit_config`の`demo.launch`を起動します。
-
+https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/2163519889481d2ef15215dd37d131f6.gif
 
 ### 実機
 
@@ -93,7 +93,7 @@ rosrun robot_design3 pick_up_move.py
 ```sh
 rosrun robot_design3 explore_move.py
 ```
-![crane_x7_gazebo](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/02ee0d609d88739e040319f066ee725c.gif "crane_x7_gazebo")
+![crane_x7_gazebo](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/2163519889481d2ef15215dd37d131f6.gif"crane_x7_gazebo")
 
 実際の動作はこちらになります。
 [YoutubeMovie](https://youtu.be/2-XMopff29E)
