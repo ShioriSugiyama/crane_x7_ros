@@ -4,32 +4,33 @@
 
 
 - ROS Melodic
-  - OS: Ubuntu 18.04.3 LTS
-  - ROS Distribution: Melodic Morenia 1.14.3
-  - Rviz 1.12.16
-  - MoveIt! 1.13.3
-  - Gazebo 9.0.0
-
+- OS: Ubuntu 18.04.3 LTS
+- ROS Distribution: Melodic Morenia 1.14.3
+- Rviz 1.12.16
+- MoveIt! 1.13.3
+- Gazebo 9.0.0
+- PCL 1.8.1
 ## インストール方法
 
 
 
 - `Subversion`を使用して本パッケージをダウンロードします。
 
+
   ```bash
   cd ~/catkin_ws/src/crane_x7_ros
-  svn export https://github.com/ShioriSugiyama/crane_x7_ros/trunk/crane_x7_robot_design3
+  svn export https://github.com/ShioriSugiyama/crane_x7_ros/trunk/crane_x7_robot_design3_pcl
   ```
   ダウンロードして、実行許可がない場合は次のコマンドで許可与えてください。
    ```bash
    chmod 777　ファイル名
     ```
--  追加したパッケージをコンパイルしてくれるように~/catkin_ws/src/crane_x7_ros/crane_xにあるpackage.xmlに記入
+- 追加したパッケージをコンパイルしてくれるように~/catkin_ws/src/crane_x7_ros/crane_x7にあるpackage.xmlに記入
 
     以下の写真のように26行目に以下の文を追加
   
     ```
-      <run_depend>crane_x7_robot_design3</run_depend>
+      <run_depend>crane_x7_robot_design3_pcl</run_depend>
     ```
 
 ![cmake](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/a3fe030e89c33e0a895bda411ab39625.png "cmake")
@@ -38,18 +39,31 @@
   ```bash
   cd ~/catkin_ws && catkin_make
   ```
+- PCL関係のパッケージは別にあるので別途ダウンロードを行う必要がありますので以下より説明していきます。
+ ```bash
+ cd ~/catkin_ws/src && git clone https://github.com/uhobeike/PCL_study.git
+ ```
+ 以上のコマンドよりPCL_studyというパッケージをクローンします。
+ もう一度 `catkin_make`を使用して本パッケージをビルドします。
+ ```bash
+  cd ~/catkin_ws && catkin_make
+  ```
+  無事コンパイル通ればOKです。
+# crane_x7_robot_design3_pcl & PCL_study
 
-# crane_x7_robot_design3_pcl
+CRANE-X7のためのパッケージ、 `realsensD435i` を使って点群処理をし、物体検出した際に`crane_x7`を動作させるためのパッケージです。
 
-CRANE-X7のためのパッケージ、 `realsensD435i` を使って画像処理して`crane_x7`を動作させるためのパッケージです。
-
-| 使用するパッケージ内プログラム名 | 機能説明 |
+| 使用するパッケージ内プログラム名(crane_x7_robot_design3_pcl) | 機能説明 |
 ----|----
-| opencv.cpp  | 赤色の物体を表示する |
 | explore_move.py | cranex_7が物体を探すために探索動作を行う |
 | pick_up_move.py | 物体が検知した場合、物体をつかみに行く |
 
 
+PCL_studyについては[こちら](https://github.com/uhobeike/PCL_study)により詳しく説明しています
+
+| 使用するパッケージ内プログラム名(PCL_study) | 機能説明 |
+----|----
+| model_plane_cut_test.cpp | ダウンサンプリングや平面除去やクラスタリングなどの処理を行い物体を検出する |
 
 ## システムの起動方法
 
@@ -61,21 +75,18 @@ Terminalを開き、`crane_x7_moveit_config`の`demo.launch`を起動します�
 
 - 実機で動作を確認する場合、まず `初めにrealsenseD435iを起動` させます。
 > realsenseD435に搭載されているIMUの影響により画面が反転したりしてしまうのでそれを防ぐための対処法です。
->（とりあえず、一回realsenseD435iを動かせばなんとかなります）
+>（とりあえず、一回realsenseD435iを動かせばなんとかなります）(またはrealsenseのroslaunchの際にenable_gyro:=falseというオプションを付ければIMUが機能しなくなるので画面回転を防げます)
 
-このパッケージにあるプログラムを動かし、反転をし続けないようにします。
-次のコマンドを実行します。
 
+まず初めに、下記のようなコマンドを打っていらない機能を使用不可にしてpointcloudのトピックを受け取り可能にさせます。
+>使用不可にする理由はこのページの一番下にあるブログ（URLを押して）に行くと詳しく書いてあります
 ```sh
-roslaunch realsense2_camera rs_camera.launch 
-rosrun crane_x7_robot_design3 cam 
+roslaunch realsense2_camera rs_camera.launch enable_pointcloud:=true enable_infra2:=false  enable_infra1:=false  enable_gyro:=false enable_stereo:=false
 ```
-以下のようなwindow[RGB_image]が表示されます。
-window[RGB_image]は閉じずにそのままにしてOKです。
-![RGB_image](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/1794985.jpg "RGB_image")
-> これで、IMUの影響による画像反転は防がれます。
-
-
+次にmodel_plane_cut_test.cppを動かすために以下のようなコマンドを実行します。
+```sh
+rosrun pcl_ros_processing model_plane_cut_test input:=/camera/depth/color/points
+```
 - 制御信号ケーブルを接続した状態で次のコマンドを実行します。
 
 ```sh
@@ -93,7 +104,7 @@ roslaunch crane_x7_moveit_config demo.launch port:=/dev/ttyUSB1
 > 物体が検知に完了時、動き始めるので実行させてもすぐにcrane_x7動きません。
 
 ```sh
-rosrun crane_x7_robot_design3 pick_up_move.py
+rosrun crane_x7_robot_design3_pcl pick_up_move.py
 ```
 物体検知完了時の動き
 ![crane_x7_e](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/98a708fc4e160b0428ef70ab31432807.gif "crane_x7_e")
@@ -101,12 +112,13 @@ rosrun crane_x7_robot_design3 pick_up_move.py
 > 物体検知するための、探索動作を行います。
 
 ```sh
-rosrun crane_x7_robot_design3 explore_move.py
+rosrun crane_x7_robot_design3_pcl explore_move.py
 ```
 物体探索動作
 
 ![crane_x7_m](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/2163519889481d2ef15215dd37d131f6.gif "crane_x7_m")
 
 実際の動作はこちらになります。
-[YoutubeMovie](https://youtu.be/2-XMopff29E)
+[YoutubeMovie](https://youtu.be/YwxTDPTYzWY)
 
+[PCLについて色々探ってブログにメモしたやつ](https://beike.hatenablog.jp/entry/2019/12/24/224303)
