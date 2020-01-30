@@ -36,7 +36,7 @@ catkin_package(
 ## Build ##
 ###########
 
-include_directories(include ${catkin_INCLUDE_DIRS} ${OpenCV_INCLDUE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS} ${OpenCV_INCLDUE_DIRS} ${realsense2_INCLUDE_DIR})
 
 #############
 ## Install ##

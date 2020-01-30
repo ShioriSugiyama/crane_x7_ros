@@ -6,29 +6,19 @@ import moveit_commander
 import geometry_msgs.msg
 import rosnode
 from tf.transformations import quaternion_from_euler
-from std_msgs.msg import String
-flag_demo = 0
-key = 0
-def callback(msg):
-    bool_c = msg.data
-    print (bool_c)
-    main()
-    rospy.sleep(10000.0)
-def listener():
-    rospy.init_node('listener', anonymous=True)
-    rospy.Subscriber("bool", String, callback)
-    rospy.spin()
+
+
 def main():
+    rospy.init_node("crane_x7_pick_and_place_controller")
     robot = moveit_commander.RobotCommander()
     arm = moveit_commander.MoveGroupCommander("arm")
     arm.set_max_velocity_scaling_factor(0.1)
     gripper = moveit_commander.MoveGroupCommander("gripper")
-    print("uho")
+
     while len([s for s in rosnode.get_node_names() if 'rviz' in s]) == 0:
         rospy.sleep(1.0)
     rospy.sleep(1.0)
 
-    
     print("Group names:")
     print(robot.get_group_names())
 
@@ -39,13 +29,13 @@ def main():
     arm_initial_pose = arm.get_current_pose().pose
     print("Arm initial pose:")
     print(arm_initial_pose)
-
+    '''
     # 何かを掴んでいた時のためにハンドを開く
     gripper.set_joint_value_target([0.9, 0.9])
     gripper.go()
 
     # SRDFに定義されている"home"の姿勢にする
-    arm.set_named_target("realsense")
+    arm.set_named_target("home")
     arm.go()
     gripper.set_joint_value_target([0.7, 0.7])
     gripper.go()
@@ -81,7 +71,7 @@ def main():
     arm.go()  # 実行
 
     # ハンドを閉じる
-    gripper.set_joint_value_target([0.05, 0.05])
+    gripper.set_joint_value_target([0.4, 0.4])
     gripper.go()
 
     # 持ち上げる
@@ -97,8 +87,6 @@ def main():
     arm.set_pose_target(target_pose)  # 目標ポーズ設定
     arm.go()							# 実行
 
-    arm.set_named_target("vertical")
-    arm.go()
     # 移動する
     target_pose = geometry_msgs.msg.Pose()
     target_pose.position.x = 0.2
@@ -143,14 +131,16 @@ def main():
     arm.go()  # 実行
 
     # SRDFに定義されている"home"の姿勢にする
-    arm.set_named_target("realsense")
+    arm.set_named_target("home")
     arm.go()
-    global flag_demo
-    flag_demo = 1
+    '''
     print("done")
 
 
 if __name__ == '__main__':
-    listener()
-   
-  
+
+    try:
+        if not rospy.is_shutdown():
+            main()
+    except rospy.ROSInterruptException:
+        pass
