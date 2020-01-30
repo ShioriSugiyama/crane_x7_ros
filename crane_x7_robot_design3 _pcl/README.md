@@ -39,7 +39,7 @@
   cd ~/catkin_ws && catkin_make
   ```
 
-# crane_x7_robot_design3
+# crane_x7_robot_design3_pcl
 
 CRANE-X7のためのパッケージ、 `realsensD435i` を使って画像処理して`crane_x7`を動作させるためのパッケージです。
 
