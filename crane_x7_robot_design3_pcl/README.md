@@ -27,13 +27,13 @@
     ```
 - 追加したパッケージをコンパイルしてくれるように~/catkin_ws/src/crane_x7_ros/crane_x7にあるpackage.xmlに記入
 
-    以下の写真のように26行目に以下の文を追加
+    以下の写真のように27行目に以下の文を追加
   
     ```
       <run_depend>crane_x7_robot_design3_pcl</run_depend>
     ```
 
-![cmake](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/a3fe030e89c33e0a895bda411ab39625.png "cmake")
+![cmake](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/Screenshot%20from%202020-01-30%2023-31-25.png "cmake")
 - `catkin_make`を使用して本パッケージをビルドします。
 
   ```bash
