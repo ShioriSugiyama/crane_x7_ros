@@ -4,11 +4,11 @@
 
 
 - ROS Melodic
-  - OS: Ubuntu 18.04.3 LTS
-  - ROS Distribution: Melodic Morenia 1.14.3
-  - Rviz 1.12.16
-  - MoveIt! 1.13.3
-  - Gazebo 9.0.0
+- OS: Ubuntu 18.04.3 LTS
+- ROS Distribution: Melodic Morenia 1.14.3
+- Rviz 1.12.16
+- MoveIt! 1.13.3
+- Gazebo 9.0.0
 
 ## インストール方法
 
@@ -24,7 +24,7 @@
    ```bash
    chmod 777　ファイル名
     ```
--  追加したパッケージをコンパイルしてくれるように~/catkin_ws/src/crane_x7_ros/crane_xにあるpackage.xmlに記入
+-  追加したパッケージをコンパイルしてくれるように~/catkin_ws/src/crane_x7_ros/crane_x7にあるpackage.xmlに記入
 
     以下の写真のように26行目に以下の文を追加
   
