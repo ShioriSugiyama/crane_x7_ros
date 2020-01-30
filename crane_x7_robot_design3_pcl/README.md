@@ -87,6 +87,10 @@ roslaunch realsense2_camera rs_camera.launch enable_pointcloud:=true enable_infr
 ```sh
 rosrun pcl_ros_processing model_plane_cut_test input:=/camera/depth/color/points
 ```
+以上のノードより物体検出した際の点群データは以下のようになっています。
+
+物体検知完了時の点群データについて
+![crane_x7_e](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/11345882994648.gif "crane_x7_e")
 - 制御信号ケーブルを接続した状態で次のコマンドを実行します。
 
 ```sh
@@ -107,7 +111,7 @@ roslaunch crane_x7_moveit_config demo.launch port:=/dev/ttyUSB1
 rosrun crane_x7_robot_design3_pcl pick_up_move.py
 ```
 物体検知完了時の動き
-![crane_x7_e](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/98a708fc4e160b0428ef70ab31432807.gif "crane_x7_e")
+![crane_x7_e](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/602084715.648793.gif "crane_x7_e")
 - 最後にexplore_move.pyを実行します。
 > 物体検知するための、探索動作を行います。
 
@@ -115,8 +119,7 @@ rosrun crane_x7_robot_design3_pcl pick_up_move.py
 rosrun crane_x7_robot_design3_pcl explore_move.py
 ```
 物体探索動作
-
-![crane_x7_m](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/2163519889481d2ef15215dd37d131f6.gif "crane_x7_m")
+![crane_x7_m](https://github.com/ShioriSugiyama/crane_x7_ros/blob/image/image/602084715.810673.gif "crane_x7_m")
 
 実際の動作はこちらになります。
 [YoutubeMovie](https://youtu.be/YwxTDPTYzWY)
